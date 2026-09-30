@@ -4,10 +4,11 @@
 доверенный клиент — выпускает у издателя токены для всех MCP-серверов
 (по одному на resource, RFC 8707) и держит открытые соединения.
 
-Готово — не меняйте, кроме одной строки шага 2 (resource_keys). На шаге 4 вы ДОПОЛНИТЕ Session полями
+Готово — на шаге 2 меняется одна строка (resource_keys), на шаге 4 вы ДОПОЛНИТЕ Session полями
 claims / allowlist / pep / guard_state: claims токена определяют allowlist
 (app.permissions), pep — клиент PDP (app.pep, лениво), guard_state —
-verdikt guardrail хода.
+verdikt guardrail хода. Там же функция pep_of(session) — отдаёт PEP
+сессии, создавая его при первом обращении (её зовёт оркестратор и smoke).
 """
 from __future__ import annotations
 

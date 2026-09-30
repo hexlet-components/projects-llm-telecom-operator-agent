@@ -9,7 +9,8 @@ TODO(шаг 4) — ядро шага:
      OPERATOR_OPS = get_subscriber_overview (только operator; чужой
                     идентификатор легитимен — роль проверит сервер)
      ESCALATION_OPS = create_ticket (позвать человека можно всегда)
-     IDENTITY_ARGS = user_id, account, subscriber, msisdn, phone, sub
+     IDENTITY_ARGS = user_id, account, subscriber, msisdn, sub
+                    (phone не ключ: это новое значение в prepare_contacts_update)
   2. allowlist_from_claims(claims) → Allowlist(sub, role, scopes,
      read_ops, write_ops): роль даёт базовый набор, scope сужает —
      карточные действия только клиенту с tariffs:write; оператору —
@@ -17,8 +18,8 @@ TODO(шаг 4) — ядро шага:
   3. visible_tools(allowlist, names) — барьер 1: модель видит только
      разрешённое; execute_action не виден никому.
   4. admit(allowlist, operation, args) → Decision(allowed, reason) —
-     барьер 2: операция в allowlist? identity-ключи в аргументах
-     (object_from_arguments:...) — отказ; лимиты считает политика.
+     барьер 2: операция вне allowlist — отказ operation_not_allowed:<op>;
+     identity-ключи в аргументах — отказ object_from_arguments:<ключ>; лимиты считает политика.
 """
 from __future__ import annotations
 
