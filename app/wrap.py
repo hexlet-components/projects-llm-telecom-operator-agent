@@ -5,16 +5,16 @@
 машинно-читаемый ответ модели, сессия не роняется; ошибка MCP-сервера
 (MCPError, код + data с подсказками) — JSON tool-результат для модели.
 
-TODO(шаг 2): крючок prepare_* — успешный ответ ({"ok": true, "action",
+TODO(контракты): крючок prepare_* — успешный ответ ({"ok": true, "action",
   "details", "view"}) → cards.create(...) → вернуть модели
   {"card_created": true, "card", "next": "перескажи карточку и спроси
   подтверждение «да/нет»"}; пока параметр sub есть в схеме инструмента —
   подставляйте session.user.sub сами (модель его не видит).
 
-TODO(шаг 3): каждый tool-вызов модели → таблицу tool_calls
+TODO(аудит): каждый tool-вызов модели → таблицу tool_calls
   (trace_id, tool, args — обрезанные, outcome, latency_ms).
 
-TODO(шаг 4): два барьера —
+TODO(права): два барьера —
   wrap_tools: фильтровать имена через permissions.visible_tools
   (барьер 1: модель не видит запрещённого);
   invoke: permissions.admit(session.allowlist, name, args) перед вызовом

@@ -1,11 +1,11 @@
 // Политики write-пути агента мобильного оператора (Dogwood: Cedar + temporal).
 //
-// TODO(шаг 4): написать политики «да — что да?» (схема действий — в
+// TODO(права): написать политики «да — что да?» (схема действий — в
 // schema.cedarschema, действия Prepare / ConfirmCard / Execute):
 //
 //   1. permit Prepare — клиент с tariffs:write; guard-условия:
 //      identity-ключи (user_id/account/subscriber) в аргументах не
-//      существуют; с шага 5 — ещё context.input.guard_ok.
+//      существуют; с guardrail — ещё context.input.guard_ok.
 //   2. permit ConfirmCard — та же карточка готовилась недавно:
 //      when temporal { formerly within 1h
 //          Tel::Action::"Prepare"::request{ input.pending_id:

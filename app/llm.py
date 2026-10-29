@@ -1,6 +1,6 @@
 """Сборка агентов на модели из .env + учёт LLM-вызовов.
 
-TODO(шаг 1):
+TODO(агенты):
   1. build_agent(name, instructions, tools=None, output_type=None):
      Agent из agents SDK; output_type — нестрогая схема
      (AgentOutputSchema(output_type, strict_json_schema=False)):
@@ -10,10 +10,10 @@ TODO(шаг 1):
      отдельный Runner.run; из result.new_items собрать tool-вызовы
      (call_id → arguments/output); report — result.final_output строкой.
 
-TODO(шаг 3): в run_agent — INSERT в llm_calls: trace_id, имя агента,
+TODO(аудит): в run_agent — INSERT в llm_calls: trace_id, имя агента,
   модель, токены (result.context_wrapper.usage), латентность.
 
-TODO(шаг 8*): если llm_pool.enabled() — запуск через
+TODO(failover): если llm_pool.enabled() — запуск через
   llm_pool.run_with_failover, в llm_calls — фактический провайдер.
 """
 from __future__ import annotations

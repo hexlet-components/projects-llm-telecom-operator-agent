@@ -2,7 +2,7 @@
 
     uvicorn --factory guardrail.service:build_app --host 127.0.0.1 --port 8300
 
-TODO(шаг 5):
+TODO(guardrail):
   1. RULE-движок: RULE_PATTERNS — детерминированные маркеры атак стенда
      (jailbreak/role_hijack — «суперпользователь», «ты теперь админ»;
      prompt_injection — «игнорируй инструкц...»; tool_hijack — «смени

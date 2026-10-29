@@ -1,6 +1,6 @@
 """Аудит: append-only журнал в Postgres — основа разбора инцидентов.
 
-TODO(шаг 3):
+TODO(аудит):
   1. OUTCOMES — фиксированная таксономия исходов: executed,
      duplicate_suppressed, rejected_by_user, rejected_by_contract, expired,
      escalated, denied, guardrail_unsafe, guardrail_degraded,

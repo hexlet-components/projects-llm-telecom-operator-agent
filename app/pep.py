@@ -1,6 +1,6 @@
 """PEP: оркестратор спрашивает PDP — сам решений о write-пути не принимает.
 
-TODO(шаг 4):
+TODO(права):
   1. Decision(allowed, reason) и Pep(session_id, claims, guard_state):
      субъектные факты из проверенного токена — sub, role,
      scopes = claims["scope"].split().

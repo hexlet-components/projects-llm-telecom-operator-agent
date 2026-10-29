@@ -3,7 +3,7 @@
 Ход — один запрос абонента; оркестратор управляет запуском агентов и
 собирает события хода для фронтенда.
 
-TODO(шаг 1) — read-контур:
+TODO(агенты) — read-контур:
   run_turn(session, message, emit):
     1. session.trace_id = f"tr_{uuid.uuid4().hex[:12]}"
     2. план: planner.build_planner() лениво → planner.next_plan →
@@ -15,7 +15,7 @@ TODO(шаг 1) — read-контур:
        (sources — источники kb из tool-результатов).
   Emit = Callable[[dict], Awaitable[None]].
 
-TODO(шаг 2) — карточка действия:
+TODO(контракты) — карточка действия:
   - в начале хода: cards.active(session) → cards.classify_answer(message):
     «да» → execute_pending, «нет» → settle("rejected") + «отменяю»,
     «оператор» → escalate, смена темы → обычный ход с живой карточкой;
@@ -25,15 +25,15 @@ TODO(шаг 2) — карточка действия:
     f"{action}:{pending_id}", idempotency.execute → вызов MCP execute_action
     → человекочитаемый ответ (executed / duplicate / daily_limit / отказ).
 
-TODO(шаг 3) — аудит: audit.append на все исходы пути действия
+TODO(аудит) — аудит: audit.append на все исходы пути действия
   (executed с before/after, duplicate_suppressed, rejected_by_user,
   server_limit, escalated).
 
-TODO(шаг 4) — права: «да» → PEP: pep.confirm → pep.execute; при Deny —
+TODO(права) — права: «да» → PEP: pep.confirm → pep.execute; при Deny —
   человекочитаемый отказ по reason (session_limit, confirmation_expired,
   card_not_prepared, pdp_unavailable).
 
-TODO(шаг 5) — guardrail: input-проверка реплики до всего хода (unsafe →
+TODO(guardrail) — guardrail: input-проверка реплики до всего хода (unsafe →
   отказ, запись в аудит); output-проверка ответа и карточки до показа;
   недоступный сервис → session.guard_state["ok"] = False (fail-closed
   для действий), чтение продолжается.
@@ -46,4 +46,4 @@ Emit = Callable[[dict], Awaitable[None]]
 
 
 async def run_turn(session, message: str, emit: Emit) -> None:
-    raise NotImplementedError("шаг 1")
+    raise NotImplementedError("TODO(агенты)")

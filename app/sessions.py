@@ -4,7 +4,7 @@
 доверенный клиент — выпускает у издателя токены для всех MCP-серверов
 (по одному на resource, RFC 8707) и держит открытые соединения.
 
-Готово — на шаге 2 меняется одна строка (resource_keys), на шаге 4 вы ДОПОЛНИТЕ Session полями
+Готово — в контрактах меняется одна строка (resource_keys), в правах вы ДОПОЛНИТЕ Session полями
 claims / allowlist / pep / guard_state: claims токена определяют allowlist
 (app.permissions), pep — клиент PDP (app.pep, лениво), guard_state —
 verdikt guardrail хода. Там же функция pep_of(session) — отдаёт PEP
@@ -46,7 +46,7 @@ async def open_session(login: str) -> Session:
         raise KeyError(f"неизвестный пользователь: {login}")
 
     tokens = Tokens(login)
-    # TODO(шаг 2): добавить "actions" — сессия подключится к action-MCP.
+    # TODO(контракты): добавить "actions" — сессия подключится к action-MCP.
     pool = McpPool(tokens, resource_keys=("crm", "billing", "kb"))
     await pool.connect()
 

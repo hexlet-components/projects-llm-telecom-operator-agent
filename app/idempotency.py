@@ -1,6 +1,6 @@
 """Идемпотентность исполнения на стороне оркестратора.
 
-TODO(шаг 2): StoredResult(duplicate, result) и execute(key, sub, action, fn):
+TODO(контракты): StoredResult(duplicate, result) и execute(key, sub, action, fn):
   - ключ в таблице idempotency с результатом → StoredResult(duplicate=True,
     сохранённый результат) — повтор не исполняет операцию второй раз;
   - иначе исполнить fn(); неудачный исход (error в ответе) ключ не

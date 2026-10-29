@@ -10,13 +10,13 @@ help:
 	@echo "make migrate    - применить db/*.sql"
 	@echo "make seed       - демо-данные + база знаний в Postgres"
 	@echo "make stand      - стенд готового: issuer + read-MCP + моки + веб-чат (:8100)"
-	@echo "make api        - backend + оркестратор (:8000)         [шаг 1]"
-	@echo "make actions    - action-MCP (:8220)                    [шаг 2]"
-	@echo "make pdp        - PDP с политиками Dogwood (:9100)      [шаг 4]"
-	@echo "make guardrail  - guardrail-сервис (:8300)              [шаг 5]"
+	@echo "make api        - backend + оркестратор (:8000)         [агенты]"
+	@echo "make actions    - action-MCP (:8220)                    [контракты]"
+	@echo "make pdp        - PDP с политиками Dogwood (:9100)      [права]"
+	@echo "make guardrail  - guardrail-сервис (:8300)              [guardrail]"
 	@echo "make snapshot   - пересчитать векторы базы знаний (нужна LM Studio)"
 	@echo "make smoke      - проверки по шагам, группа: make smoke G=0"
-	@echo "make scenarios  - диалоговые сценарии на живой LLM      [шаг 6]"
+	@echo "make scenarios  - диалоговые сценарии на живой LLM      [сценарии]"
 	@echo "make reset      - вернуть демо-данные моков в исходное"
 
 install:
