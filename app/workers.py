@@ -4,7 +4,7 @@
 узких специалистов. Какого агента каким шагом запустить — решает
 оркестратор по плану, не сами агенты.
 
-TODO(шаг 1): каталог READ-агентов и их сборка
+TODO(агенты): каталог READ-агентов и их сборка
   1. CATALOG: data (get_my_profile, get_my_tariff, list_tariffs,
      list_my_charges) и kb (search_kb) — id → {"title", "tools"}.
   2. DATA_PROMPT / KB_PROMPT: доложи факты по-русски, коротко, всё из
@@ -14,9 +14,9 @@ TODO(шаг 1): каталог READ-агентов и их сборка
      с инструментами своего домена (app.wrap.wrap_tools) через
      app.llm.build_agent. Возврат: {id: Agent}.
 
-TODO(шаг 2): агенты действий
+TODO(контракты): агенты действий
   - в CATALOG появляется tariff (prepare_tariff_change +
-    read-инструменты; с шага 4 — ещё prepare_toggle_service и
+    read-инструменты; с правами — ещё prepare_toggle_service и
     prepare_contacts_update) и tickets (create_ticket);
   - TARIFF_PROMPT: просьба изменить — ОБЯЗАН первым вызовом вызвать
     соответствующий prepare_*, пересказать карточку и спросить «да/нет»;
@@ -32,4 +32,4 @@ CATALOG: dict = {}
 
 
 def build_workers(session, agent_ids: tuple[str, ...] = ("data", "kb")) -> dict:
-    raise NotImplementedError("шаг 1")
+    raise NotImplementedError("TODO(агенты)")

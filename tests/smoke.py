@@ -35,7 +35,7 @@ def _client() -> httpx.AsyncClient:
 
 
 async def group_0_stand() -> None:
-    """Шаг 0: стенд поднят, issuer выдаёт токены, read-MCP отвечает, моки живы."""
+    """Стенд поднят, issuer выдаёт токены, read-MCP отвечает, моки живы."""
     async with _client() as c:
         r = await c.get(f"{STAND}/health")
         check("0", "stand_health", r.status_code == 200)
@@ -97,9 +97,9 @@ async def group_0_stand() -> None:
 
 
 async def group_1_backend() -> None:
-    """Шаг 1: backend поднят, сессия открывается, соединения MCP живы.
+    """Агенты: backend поднят, сессия открывается, соединения MCP живы.
 
-    Диалог с LLM проверяется сценариями шага 6: smoke не зависит от модели.
+    Диалог с LLM проверяется диалоговыми сценариями: smoke не зависит от модели.
     """
     from core.mcpclient import _client_factory  # noqa: F401 — клиентский стек готов
 
@@ -124,7 +124,7 @@ async def group_1_backend() -> None:
 
 
 async def group_2_actions() -> None:
-    """Шаг 2: контракты действий, машинно-читаемые ошибки, идемпотентность.
+    """Контракты действий, машинно-читаемые ошибки, идемпотентность.
 
     Прямые вызовы action-MCP без LLM: модель здесь не участвует.
     """
@@ -188,7 +188,7 @@ async def group_2_actions() -> None:
 
 
 async def group_3_audit() -> None:
-    """Шаг 3: аудит — исполнение оставляет запись с before/after и trace_id.
+    """Аудит: исполнение оставляет запись с before/after и trace_id.
 
     Без LLM: сессия собирается напрямую, исполнение вызывается кодом —
     как и в бою.
@@ -229,7 +229,7 @@ async def group_3_audit() -> None:
 
 
 async def group_4_permissions() -> None:
-    """Шаг 4: права — барьеры, JWT-контур, PDP-цикл «да — что да?», атаки."""
+    """Права: барьеры, JWT-контур, PDP-цикл «да — что да?», атаки."""
     from agents.mcp import MCPServerStreamableHttp
     from app import permissions
     from core import db
@@ -361,7 +361,7 @@ async def group_4_permissions() -> None:
 
 
 async def group_5_guardrails() -> None:
-    """Шаг 5: guardrail — verdikты, fail-closed, guard_ok в политике."""
+    """Guardrail: verdikты, fail-closed, guard_ok в политике."""
     from app import guardrail_client
 
     # verdikts движка

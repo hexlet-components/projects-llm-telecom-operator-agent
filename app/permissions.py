@@ -1,6 +1,6 @@
 """Права сессии: allowlist из claims, два барьера оркестратора.
 
-TODO(шаг 4) — ядро шага:
+TODO(права) — ядро шага:
   1. Константы операций:
      READ_OPS = get_my_profile, get_my_tariff, list_tariffs,
                 list_my_charges, search_kb

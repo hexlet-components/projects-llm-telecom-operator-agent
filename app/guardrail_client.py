@@ -1,6 +1,6 @@
 """Клиент guardrail-сервиса: verdikt вероятностный, решения — за кодом.
 
-TODO(шаг 5): Verdict(safe, category, available) и check(text, mode):
+TODO(guardrail): Verdict(safe, category, available) и check(text, mode):
   POST {GUARDRAIL_URL}/check {"text", "mode": "input"|"output"}.
   Недоступность сервиса — НЕ исключение: Verdict(safe=True,
   available=False) — чтение продолжается, действия блокируются флагом

@@ -2,7 +2,7 @@
 
     uvicorn actions.server:app --host 127.0.0.1 --port 8220
 
-TODO(шаг 2): один MCPServer (пакет mcp, пока БЕЗ auth) с инструментами:
+TODO(контракты): один MCPServer (пакет mcp, пока БЕЗ auth) с инструментами:
   prepare_tariff_change(sub, tariff) / prepare_toggle_service(sub,
   service, enabled) / prepare_contacts_update(sub, phone, email) —
   для LLM; execute_action(sub, action, details_json, pending_id,
@@ -14,7 +14,7 @@ TODO(шаг 2): один MCPServer (пакет mcp, пока БЕЗ auth) с и�
   Запуск: Starlette + Mount("/actions", streamable_http_app()) +
   lifespan (session manager живёт в event loop uvicorn).
 
-TODO(шаг 4): перевод сервера под JWT —
+TODO(права): перевод сервера под JWT —
   make_mcp_server("actions", resource=RESOURCES["actions"]) из
   core.server_auth (OAuth 2.1 resource server: Bearer в каждом вызове,
   проверка подписи/iss/aud); убрать sub из всех контрактов — субъект из
